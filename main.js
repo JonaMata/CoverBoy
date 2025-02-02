@@ -41,7 +41,7 @@ const matrix = new LedMatrix(
         gpioSlowdown: 4,
     }
 );
-matrix.brightness(100);
+matrix.brightness(parseInt(process.env.BRIGHTNESS) || 100);
 console.log('Matrix initiated');
 
 function printState() {
