@@ -110,5 +110,5 @@ async function showImage(url) {
             }
             matrix.sync();
             console.log('done');
-        }));
+        })).catch(console.error);
 }
