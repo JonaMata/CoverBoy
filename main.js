@@ -102,13 +102,11 @@ async function showImage(url) {
             }
             console.log('writing to matrix');
             matrix.clear();
-            let imageBuffer = Buffer.alloc(64 * 64 * 3);
             for (let i = 0; i < 64; i++) {
                 for (let j = 0; j < 64; j++) {
                     matrix.brightness(100).fgColor({r: pixels.get(i, j, 0), g: pixels.get(i, j, 1), b: pixels.get(i, j, 2)}).setPixel(i, j);
                 }
             }
-            matrix.drawBuffer(imageBuffer);
             console.log('done');
         }));
 }
