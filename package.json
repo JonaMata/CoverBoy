@@ -1,0 +1,20 @@
+{
+  "name": "coverboy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --env-file=.env main.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "get-pixels": "^3.3.3",
+    "home-assistant-js-websocket": "^9.4.0",
+    "rpi-led-matrix": "^1.14.0",
+    "sharp": "^0.33.5"
+  }
+}
