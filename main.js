@@ -1,3 +1,5 @@
+import {WebSocket} from "ws";
+Object.assign(global, {WebSocket});
 import {
     Font,
     GpioMapping,
@@ -15,6 +17,7 @@ import {
 import getPixels from "get-pixels";
 import sharp from "sharp";
 import { buffer } from "node:stream/consumers";
+import 'dotenv/config';
 
 let currentMedia = null;
 let zeroCount = 0;
@@ -66,7 +69,7 @@ function printState() {
                 }
                 if (JSON.stringify(media) !== JSON.stringify(currentMedia)) {
                     currentMedia = media;
-                    saveImage(currentMedia.image);
+                    showImage(currentMedia.image);
                     printState();
                 }
                 zeroCount = 0;
@@ -85,6 +88,7 @@ function printState() {
 })();
 
 async function showImage(url) {
+    console.log('showing image', url);
     fetch(url)
         .then(async response => sharp(await buffer(response.body)).resize(64, 64).jpeg({quality: 100}).toBuffer())
         .then(image => getPixels(image, "image/jpeg", (err, pixels) => {
@@ -92,16 +96,15 @@ async function showImage(url) {
                 console.error(err);
                 return;
             }
+            console.log('writing to matrix');
             matrix.clear();
             let imageBuffer = Buffer.alloc(64 * 64 * 3);
             for (let i = 0; i < 64; i++) {
                 for (let j = 0; j < 64; j++) {
-                    imageBuffer[j * 64 * 3 + i * 3] = pixels.get(i, j, 0);
-                    imageBuffer[j * 64 * 3 + i * 3 + 1] = pixels.get(i, j, 1);
-                    imageBuffer[j * 64 * 3 + i * 3 + 2] = pixels.get(i, j, 2);
-                    console.log(pixels.get(i, j, 0), pixels.get(i, j, 1), pixels.get(i, j, 2));
+                    matrix.fgColor({r: pixels.get(i, j, 0), g: pixels.get(i, j, 1), b: pixels.get(i, j, 2)}).setPixel(i, j);
                 }
             }
             matrix.drawBuffer(imageBuffer);
+            console.log('done');
         }));
 }

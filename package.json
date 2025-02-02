@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --env-file=.env main.js"
+    "start": "node main.js"
   },
   "type": "module",
   "keywords": [],
@@ -12,9 +12,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "get-pixels": "^3.3.3",
     "home-assistant-js-websocket": "^9.4.0",
     "rpi-led-matrix": "^1.14.0",
-    "sharp": "^0.33.5"
+    "sharp": "^0.33.5",
+    "ws": "^8.18.0"
   }
 }
