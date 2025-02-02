@@ -101,14 +101,15 @@ async function showImage(url) {
                 return;
             }
             console.log('writing to matrix');
-            matrix.clear();
+            matrix.clear().brightness(100);
             for (let i = 0; i < 64; i++) {
                 for (let j = 0; j < 64; j++) {
                     let color = {r: pixels.get(i, j, 0), g: pixels.get(i, j, 1), b: pixels.get(i, j, 2)};
                     console.log(i, j, color);
-                    matrix.brightness(100).fgColor(color).setPixel(i, j);
+                    matrix.fgColor(color).bgColor(color).setPixel(i, j);
                 }
             }
+            matrix.sync();
             console.log('done');
         }));
 }
