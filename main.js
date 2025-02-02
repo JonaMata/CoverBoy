@@ -24,7 +24,7 @@ let zeroCount = 0;
 
 let printTimeout = null;
 
-console.log('Inbtiating matrix');
+console.log('Initiating matrix');
 const matrix = new LedMatrix(
     {
         ...LedMatrix.defaultMatrixOptions(),
@@ -105,7 +105,7 @@ async function showImage(url) {
             let imageBuffer = Buffer.alloc(64 * 64 * 3);
             for (let i = 0; i < 64; i++) {
                 for (let j = 0; j < 64; j++) {
-                    matrix.fgColor({r: pixels.get(i, j, 0), g: pixels.get(i, j, 1), b: pixels.get(i, j, 2)}).setPixel(i, j);
+                    matrix.brightness(100).fgColor({r: pixels.get(i, j, 0), g: pixels.get(i, j, 1), b: pixels.get(i, j, 2)}).setPixel(i, j);
                 }
             }
             matrix.drawBuffer(imageBuffer);
