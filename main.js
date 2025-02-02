@@ -24,6 +24,7 @@ let zeroCount = 0;
 
 let printTimeout = null;
 
+console.log('Inbtiating matrix');
 const matrix = new LedMatrix(
     {
         ...LedMatrix.defaultMatrixOptions(),
@@ -40,6 +41,7 @@ const matrix = new LedMatrix(
         gpioSlowdown: 4,
     }
 );
+console.log('Matrix initiated');
 
 function printState() {
     console.log(currentMedia);
@@ -49,6 +51,7 @@ function printState() {
     }, 10000);
 }
 
+console.log('Connecting to Home Assistant');
 (async () => {
     const auth = createLongLivedTokenAuth(
         process.env.HASS_URL,
@@ -86,6 +89,7 @@ function printState() {
         }
     });
 })();
+console.log('Connected to Home Assistant');
 
 async function showImage(url) {
     console.log('showing image', url);
