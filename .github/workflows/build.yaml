@@ -3,19 +3,27 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - feature/build
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
       - name: Package into node binary
         uses: lando/pkg-action@v4
         with:
           entrypoint: bin/main.js
           arch: arm64
           config: package.json
-          node-version: latest
+          node-version: 20
           options: -C
           os: linux
           upload: true
