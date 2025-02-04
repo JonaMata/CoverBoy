@@ -1,7 +1,7 @@
 {
   "name": "coverboy",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node main.js"
@@ -15,6 +15,7 @@
     "dotenv": "^16.4.7",
     "get-pixels": "^3.3.3",
     "home-assistant-js-websocket": "^9.4.0",
+    "pkg": "^5.8.1",
     "rpi-led-matrix": "^1.14.0",
     "sharp": "^0.33.5",
     "ws": "^8.18.0"

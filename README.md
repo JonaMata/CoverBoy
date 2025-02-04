@@ -10,7 +10,7 @@ Create a `.env` file in the project directory and add the following environment 
 HASS_URL=http://homeassistant.local:8123
 ACCESS_TOKEN=your_access_token
 ```
-Replace `http://homeassistant.local:8123` with the URL of your HomeAssistant instance and `your_access_token` with a long live access token (create one on the profile page of your HomeAssistant user.
+Replace `http://homeassistant.local:8123` with the URL of your HomeAssistant instance and `your_access_token` with a long live access token (create one on the [profile](https://my.home-assistant.io/redirect/profile/) page of your HomeAssistant user under the Security tab).
 
 ## Usage
 Run `sudo npm start` to start the application. If any media is playing the album cover will be automatically displayed on the LED matrix.

@@ -1,0 +1,22 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Package into node binary
+        uses: lando/pkg-action@v4
+        with:
+          entrypoint: bin/main.js
+          arch: arm64
+          config: package.json
+          node-version: latest
+          options: -C
+          os: linux
+          upload: true
+          pkg: "@yao-pkg/pkg@5.10.0"
