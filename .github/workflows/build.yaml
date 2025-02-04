@@ -18,7 +18,7 @@ jobs:
           node-version: 20
       - run: npm ci
       - name: Package into node binary
-        uses: lando/pkg-action@v4
+        uses: lando/pkg-action@v6
         with:
           entrypoint: bin/main.js
           arch: arm64
@@ -27,4 +27,4 @@ jobs:
           options: -C
           os: linux
           upload: true
-          pkg: "@yao-pkg/pkg@6"
+          pkg: "@yao-pkg/pkg@5.10.0"
